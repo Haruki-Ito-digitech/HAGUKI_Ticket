@@ -1,64 +1,41 @@
 {% extends "layout_staff.html" %}
-
 {% block body %}
 
-<!-- 機能共用 CSS -->
-<link rel="stylesheet" href="/static/css/staff/staff_customer_manage.css">
-
-<!-- ナビゲーション領域 -->
-<nav>
-  <div class="container">
-    <p class="menu">
-      <a href="{{ url_for('user_mypage') }}">マイページ</a>
-      >
-      <a href="{{ url_for('user_info') }}">会員情報</a>
-      >
-     会員情報変更
-    </p>
-  </div>
-</nav>
-
-<!-- メインコンテンツ領域 -->
+<a href= "{{url_for('user_user_top')}}">マイページ</a>><a href="{{url_for('user_info')}}">会員情報</a>>退会確認</div>
 <main>
-  <div class="container">
-    <h1 id="main_title">
-      <!-- ここに ページタイトルを表示する -->
-    </h1>
-    <h2 id="main_sub_title">会員情報</h2>
+  <form name="inputForm" method="post">
+    <div id="form_area" class="base_pattern">
+      <p>アカウント名：</p>
+      <p><input name="customer_account" type="text" value="{{ customer_account }}" readonly="readonly"></p>
 
-    <form name="inputForm" method="post">
-      <div id="form_area" class="base_pattern">
-        <p>アカウント名：</p>
-        <p><input name="customer_account" type="text" value="{{ customer_account }}" readonly="readonly"></p>
+      <p>パスワード<span class="required">（必須）</span>：</p>
+      <p><input name="customer_password" type="password" value="{{ customer_password }}"></p>
 
-        <p>パスワード<span class="required">（必須）</span>：</p>
-        <p><input name="customer_password" type="password" value="{{ customer_password }}"></p>
+      <p>会員名<span class="required">（必須）</span>：</p>
+      <p><input name="customer_name" type="text" value="{{ customer_name }}"></p>
 
-        <p>会員名<span class="required">（必須）</span>：</p>
-        <p><input name="customer_name" type="text" value="{{ customer_name }}"></p>
+      <p>郵便番号</p>
+      <p><input name="customer_zipcode" type="tel" value="{{ customer_zipcode }}"></p>
 
-        <p>郵便番号</p>
-        <p><input name="customer_zipcode" type="tel" value="{{ customer_zipcode }}"></p>
+      <p>住所</p>
+      <p><input name="customer_address" type="text" value="{{ customer_address }}"></p>
 
-        <p>住所</p>
-        <p><input name="customer_address" type="text" value="{{ customer_address }}"></p>
+      <p>電話番号：</p>
+      <p><input name="customer_phone" type="tel" value="{{ customer_phone }}"></p>
 
-        <p>電話番号：</p>
-        <p><input name="customer_phone" type="tel" value="{{ customer_phone }}"></p>
+      <p>生年月日：</p>
+      <p><input name="customer_phone" type="tel" value="{{ customer_birth }}"></p>
 
-        <!-- hidden属性の項目 -->
-        <input name="customer_id" type="hidden" value="{{ customer_id }}">
-      </div>
+      
+      <!-- hidden属性の項目 -->
+      <input name="customer_id" type="hidden" value="{{ customer_id }}">
+    </div>
 
-      <div id="button_area">
-        <input type="submit" formaction="{{ url_for('user_info_check', mode=mode) }}" class="go_next_button"
-          value="確認画面へ">
-        <input type="button" class="other_button" value="戻る"
-          onclick="location.href=`{{ url_for('user_info') }}`">
-        
-      </div>
-    </form>
-  </div>
+
+<div buttons>
+    <input type="button" class=".go_next_button" value="変更する" onClick="window.location.href=`{{url_for('user_info')}}`">
+    <input type="button" class=".go_next_button" value="変更しない" onClick="window.location.href=`{{url_for('user_comp')}}`">
+</div>
 </main>
 
 {% endblock %}
