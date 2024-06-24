@@ -1,0 +1,70 @@
+{% extends "layout_staff.html" %}
+
+{% block body %}
+
+<!-- 機能共用 CSS -->
+<link rel="stylesheet" href="/static/css/staff/staff_customer_manage.css">
+
+<!-- ナビゲーション領域 -->
+<nav>
+  <div class="container">
+    <p class="menu">
+      <a href="{{ url_for('user_user_top') }}">スタッフメニュー</a>
+      >
+      <a href="{{ url_for('user_info') }}">会員管理</a>
+      >
+      <a href="{{ url_for('user_info_change') }}">変更</a>
+      >変更内容確認
+    </p>
+  </div>
+</nav>
+
+<!-- メインコンテンツ領域 -->
+<main>
+    <div class="container">
+      <h1 id="main_title">
+        <!-- ここに ページタイトルを表示する -->
+      </h1>
+      <h2 id="main_sub_title">
+		会員情報変更
+	  </h2>
+
+
+      <form id="inputForm" method="post" class="required">
+        <div id="form_area" class="base_pattern">
+          <p>メールアドレス</p>
+          <p><input name="customer_account" type="text" value="{{ customer_account }}" readonly="readonly"></p>
+
+          <p>パスワード</p>
+          <p><input name="customer_password" type="text" value="{{ customer_password }}" readonly="readonly"></p>
+
+          <p>氏名</p>
+          <p><input name="customer_name" type="text" value="{{ customer_name }}" readonly="readonly"></p>
+
+          <p>郵便番号</p>
+          <p><input name="customer_zipcode" type="text" value="{{ customer_zipcode }}" readonly="readonly"></p>
+
+          <p>住所</p>
+          <p><input name="customer_address" type="text" value="{{ customer_address }}" readonly="readonly"></p>
+
+          <p>電話番号</p>
+          <p><input name="customer_phone" type="text" value="{{ customer_phone}}" readonly="readonly"></p>
+
+          <p>生年月日</p>
+          <p><input name="customer_birth" type="date" value="{{ customer_birth}}" readonly="readonly"></p>
+
+
+          <!-- hidden属性の項目 いらない気がする-->
+          <input name="customer_id" type="hidden" value="{{ customer_id }}">
+          <input name="customer_payment" type="hidden" value="{{ customer_payment }}">
+        </div>
+        <div id="button_area">
+          <input type="submit" formaction="{{url_for('user_info_comp')}}" class="go_next_button" value="確定">
+          <input type="button" class="other_button" value="修正" onclick="location.href=`{{url_for('user_info_change')}}`">
+        </div>
+      </form>
+    </div>
+  </main>
+
+
+{% endblock %}
