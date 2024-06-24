@@ -40,12 +40,17 @@
         </p>
  
         <p>席種：</p>
-        <input name="ticket_seat_id" class="info" type="text" value="{{ticket_seat_id}}" readonly="readonly">
+        <input name="ticket_seat_name" class="info" type="text" value="{{ticket_seat_name}}" readonly="readonly">
         </p>
- 
+
         <p>金額：</p>
-         <input name="ticket_price" class="info" type="text" value="{{ticket_price}}" readonly="readonly">
-        </p>
+        {% for ticket in tickets %}
+          {% if ticket.id == ticket_seat_id %}
+            <input name="ticket_price" class="info" type="text" value="{{ticket.price}}円" readonly="readonly">
+          {% endif %}
+        {% endfor %}
+
+
  
         <!-- hidden属性の項目 -->
         <input name="event_category_id" type="hidden" value="{{ event_category_id }}">
@@ -54,6 +59,8 @@
         <input name="event_id" type="hidden" value="{{ event_id }}">
         <input name="event_overview" type="hidden" value="{{ event_overview }}">
         <input name="event_date" type="hidden" value="{{ event_date }}">
+        <input name="ticket_seat_id" type="hidden" value="{{ ticket_seat_id }}">
+
       </div>
  
       <div id="button_area">

@@ -17,29 +17,32 @@
     <form name="inputForm" method="post">
       <div id="form_area" class="base_pattern">
         <p>メールアドレス</p>
-        <p><input name="event_name" class="info" type="text" value="" >
+        <p><input name="customer_account" class="info" type="text" value="" >
         </p>
 
+        <p>パスワード</p>
+        <p><input name="customer_password" class="info" type="password" value="">
+        </p>
 
         <p>氏名</p>
-        <p><input name="event_date" class="info" type="text" value="" ></p>
+        <p><input name="customer_name" class="info" type="text" value="" ></p>
 
-        <p>郵便番号</p>
-        <p><input name="event_place" class="info" type="text" value="" >
+        <p>郵便番号(ハイフン無し)</p>
+        <p><input name="customer_zipcode" class="info" type="number" value="" >
         </p>
 
         <p>住所</p>
-        <p><input name="event_overview" class="info" type="text" value="" >
+        <p><input name="customer_address" class="info" type="text" value="" >
         </p>
 
-        <p>電話番号</p>
-        <p><input name="event_ticket" class="info" type="text" value="" ></p>
+        <p>電話番号(ハイフン無し)</p>
+        <p><input name="customer_phone" class="info" type="number" value="" ></p>
 
         <p>生年月日</p>
-        <p><input name="event_ticket" class="info" type="text" value="" ></p>
+        <p><input name="customer_birth" class="info" type="date" value="" ></p>
 
         <p>支払い方法</p>
-        <p><input name="event_ticket" class="info" type="text" value="" ></p>
+        <p><input name="customer_payment" class="info" type="text" value="" ></p>
 
         </p>
 
@@ -50,6 +53,9 @@
         <input name="event_id" type="hidden" value="{{ event_id }}">
         <input name="event_overview" type="hidden" value="{{ event_overview }}">
         <input name="event_date" type="hidden" value="{{ event_date }}">
+        <input name="ticket_seat_id" type="hidden" value="{{ ticket_seat_id }}">
+        <input name="ticket_price" type="hidden" value="{{ ticket_price }}">
+
         <!-- <input name="customer_id" type="hidden" value="{{ customer_id }}"> -->
       </div>
 

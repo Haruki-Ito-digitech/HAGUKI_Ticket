@@ -78,6 +78,7 @@
                         <input name="event_id" type="hidden" value="{{ event.event_id }}">
                         <input name="event_overview" type="hidden" value="{{ event.event_overview }}">
                         <input name="event_date" type="hidden" value="{{ event.event_date }}">
+                        <input name="event_category_name" type="hidden" value="{{ event_category_name }}">
 
                     </div>
                       <input class="check" type="submit" formaction="{{url_for('event_info')}}" value="."/>

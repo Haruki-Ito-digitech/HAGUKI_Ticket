@@ -38,13 +38,11 @@
         <p>※残席余裕あり→○、残席わずか→△、売り切れ→×</p>
  
         <p>席種：</p>
-        <input type="radio" name="ticket_seat_id" value="S席" checked="checked">
-        S席:10000円 &nbsp;&nbsp;
-        <input type="radio" name="ticket_seat_id" value="A席">
-        A席:5000円 &nbsp;&nbsp;
-        <input type="radio" name="ticket_seat_id" value="B席">
-        B席:3000円
-        </p>
+        {% for ticket in tickets %}
+          <input type="radio" name="ticket_seat_id" value="{{ticket.id}}">
+          <input name="ticket_seat_name" type="hidden" value="{{ ticket.name }}">
+          {{ticket.name}}:{{ticket.price}}円 &nbsp;&nbsp;
+        {% endfor %}
  
         <!-- hidden属性の項目 -->                       
         <input name="event_category_id" type="hidden" value="{{ event_category_id }}">
@@ -53,6 +51,7 @@
         <input name="event_id" type="hidden" value="{{ event_id }}">
         <input name="event_overview" type="hidden" value="{{ event_overview }}">
         <input name="event_date" type="hidden" value="{{ event_date }}">
+
 
       </div>
  
