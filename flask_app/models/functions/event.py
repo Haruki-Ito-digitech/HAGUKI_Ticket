@@ -10,6 +10,9 @@ def create_event(request):
         event_date=request.form["event_date"],
         event_place=request.form["event_place"],
         event_overview=request.form["event_overview"],
+        event_value = 0,
+        event_cumulative = 0,
+        event_evaluate_times = 0
     )
     db.session.add(mst_event)
     db.session.commit()

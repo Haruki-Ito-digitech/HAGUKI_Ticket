@@ -12,7 +12,6 @@ errorMessages = ErrorMessages()
 
 def validate_form(form):
     errors = []
-
     # 各フィールドが空白でないことを確認
     for field, value in form.items():
         if not value:
