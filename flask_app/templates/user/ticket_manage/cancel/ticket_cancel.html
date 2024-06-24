@@ -21,16 +21,17 @@
     <h2 id="main_sub_title">本当にキャンセルしますか？</h2>
   </div>
 
-  <div>イベント名</div>
-  <div>イベントカテゴリ</div>
-  <div>日付</div>
-  <div>場所</div>
-  <div>概要</div>
-  <div>席種</div>
-  <div>金額</div>
+  <p>イベント名 {{ my_ticket.event_name }}</p>
+  <p>イベントカテゴリ {{ my_ticket.event_category_name }}</p>
+  <p>日付 {{ my_ticket.event_date }}</p>
+  <p>場所 {{ my_ticket.event_place }}</p>
+  <p>概要 {{ my_ticket.event_overview }}</p>
+  <p>席種 {{ my_ticket.ticket_seat_name }}</p>
+  <p>金額 {{ my_ticket.ticket_price }}</p>
+  <input name="reservation_id" type="hidden" value="{{ my_ticket.reservation_id }}">
 
 <!-- 「はい」クリック時にチケット情報を削除し、削除完了画面を表示 -->
-<form action="{{ url_for('delete_ticket') }}" method="post">
+<form action="{{ url_for('delete_ticket', reservation_id = reservation_id) }}" method="post">
     <button type="submit" class="menu_button">はい</button>
     </form>
 

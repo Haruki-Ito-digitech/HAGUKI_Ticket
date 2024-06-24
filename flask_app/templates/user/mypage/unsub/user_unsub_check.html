@@ -5,17 +5,19 @@
 <main>
 <h2 class="">退会すると以下の会員情報が削除され、ムジクロのサービスがご利用いただけなくなります。</h2>
 
+
 <div class="user_info">
-<div>メールアドレス</div>
-<div>パスワード</div>
-<div>氏名</div>
-<div>郵便番号</div>
-<div>住所</div>
-<div>電話番号</div>
-<div>生年月日</div>
+<div>メールアドレス {{ customer.customer_account }}</div>
+<div>パスワード {{ customer.customer_password }}</div>
+<div>氏名 {{ customer.customer_name }}</div>
+<div>郵便番号 {{ customer.customer_zipcode }}</div>
+<div>住所 {{ customer.customer_address }}</div>
+<div>電話番号 {{ customer.customer_phone }}</div>
+<div>生年月日 {{ customer.customer_birth }}</div>
 </div>
 
 <h2>本当に退会しますか？</h2>
+
 <div buttons>
     <input type="button" class=".go_next_button" value="退会しない" onClick="window.location.href=`{{url_for('user_info')}}`">
     <input type="button" class=".go_next_button" value="退会する" onClick="window.location.href=`{{url_for('user_comp')}}`">

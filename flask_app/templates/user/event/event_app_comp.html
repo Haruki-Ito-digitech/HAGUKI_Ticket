@@ -17,7 +17,8 @@
       </div>
 
       <div id="button_area">
-        <input type="submit" formaction="{{ url_for('user_mypage', mode=mode) }}" class="go_next_button" value="マイページへ戻る">
+        <input type="button" class="go_next_button" value="マイページへ戻る"
+        onclick="location.href=`{{url_for('user_user_top')}}`">
       </div>
     </form>
   </div>

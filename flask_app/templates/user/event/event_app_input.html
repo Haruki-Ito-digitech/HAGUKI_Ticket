@@ -5,19 +5,6 @@
 <!-- 機能共用 CSS -->
 <link rel="stylesheet" href="/static/css/staff/staff_customer_manage.css">
 
-<!-- ナビゲーション領域 -->
-<nav>
-  <div class="container">
-    <p class="menu">
-      <a href="{{ url_for('user_mypage') }}">マイページ</a>
-      >
-      <a href="{{ url_for('') }}">イベント詳細</a>
-      >
-      <a href="{{ url_for('') }}">申込みページ</a>
-      >申込者情報入力
-    </p>
-  </div>
-</nav>
 
 <!-- メインコンテンツ領域 -->
 <main>
@@ -30,42 +17,45 @@
     <form name="inputForm" method="post">
       <div id="form_area" class="base_pattern">
         <p>メールアドレス</p>
-        <p><input name="event_name" class="info" type="text" value="" readonly="readonly">
+        <p><input name="event_name" class="info" type="text" value="" >
         </p>
 
-        <p>パスワード</p>
-        <p><input name="event_category" class="info" type="password" value=""
-            readonly="readonly">
-        </p>
 
         <p>氏名</p>
-        <p><input name="event_date" class="info" type="text" value="" readonly="readonly"></p>
+        <p><input name="event_date" class="info" type="text" value="" ></p>
 
         <p>郵便番号</p>
-        <p><input name="event_place" class="info" type="text" value="" readonly="readonly">
+        <p><input name="event_place" class="info" type="text" value="" >
         </p>
 
         <p>住所</p>
-        <p><input name="event_overview" class="info" type="text" value="" readonly="readonly">
+        <p><input name="event_overview" class="info" type="text" value="" >
         </p>
 
         <p>電話番号</p>
-        <p><input name="event_ticket" class="info" type="text" value="" readonly="readonly"></p>
+        <p><input name="event_ticket" class="info" type="text" value="" ></p>
 
         <p>生年月日</p>
-        <p><input name="event_ticket" class="info" type="text" value="" readonly="readonly"></p>
+        <p><input name="event_ticket" class="info" type="text" value="" ></p>
 
         <p>支払い方法</p>
-        <p><input name="event_ticket" class="info" type="text" value="" readonly="readonly"></p>
+        <p><input name="event_ticket" class="info" type="text" value="" ></p>
+
         </p>
 
-        <!-- hidden属性の項目 -->
+        <!-- hidden属性の項目 -->        
+        <input name="event_category_id" type="hidden" value="{{ event_category_id }}">
+        <input name="event_name" type="hidden" value="{{ event_name }}">
+        <input name="event_place" type="hidden" value="{{ event_place }}">
+        <input name="event_id" type="hidden" value="{{ event_id }}">
+        <input name="event_overview" type="hidden" value="{{ event_overview }}">
+        <input name="event_date" type="hidden" value="{{ event_date }}">
         <!-- <input name="customer_id" type="hidden" value="{{ customer_id }}"> -->
       </div>
 
       <div id="button_area">
-        <input type="submit" formaction="{{ url_for('', mode=mode) }}" class="go_next_button" value="確認画面へ移る">
-        <input type="button" class="other_button" value="戻る" onclick="location.href=`{{url_for('')}}`">
+        <input type="submit" formaction="{{ url_for('event_app_check')}}" class="go_next_button" value="確認画面へ移る">
+        <input type="button" class="other_button" value="戻る" onclick="location.href=`{{url_for('event_app')}}`">
       </div>
     </form>
   </div>

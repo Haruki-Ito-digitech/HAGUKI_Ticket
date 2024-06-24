@@ -30,8 +30,8 @@ def user_user_top():
         mst_event_dict.append(param)
     return render_template("/user/mypage/user_mypage.html", mst_event = mst_event_dict )
 
-@app.route("/user_user_top/event_check", methods=["GET", "POST"])
-def event_check():
+@app.route("/user_user_top/event_info", methods=["GET", "POST"])
+def event_info():
     event_id = request.form['event_id']
     event_name = request.form['event_name']
     event_category_id = request.form['event_category_id']
@@ -39,9 +39,76 @@ def event_check():
     event_place = request.form['event_place']
     event_overview = request.form['event_overview']
 
-    return render_template("/user/event/event_app_check.html",                               event_id=event_id,
+    return render_template("/user/event/event_info.html",  
+                               event_id=event_id,
                                event_name=event_name,
                                event_category_id=event_category_id,
                                event_date=event_date,
                                event_place=event_place,
                                event_overview=event_overview)
+
+@app.route("/user_user_top/event_app", methods=["GET", "POST"])
+def event_app():
+    event_id = request.form['event_id']
+    event_name = request.form['event_name']
+    event_category_id = request.form['event_category_id']
+    event_date = request.form['event_date']
+    event_place = request.form['event_place']
+    event_overview = request.form['event_overview']
+    return render_template("/user/event/event_app.html",
+                               event_name=event_name,
+                               event_id=event_id,
+                               event_category_id=event_category_id,
+                               event_date=event_date,
+                               event_place=event_place,
+                               event_overview=event_overview)
+
+
+@app.route("/user_user_top/event_app_input", methods=["GET", "POST"])
+def event_app_input():
+    event_id = request.form['event_id']
+    event_name = request.form['event_name']
+    event_category_id = request.form['event_category_id']
+    event_date = request.form['event_date']
+    event_place = request.form['event_place']
+    event_overview = request.form['event_overview']
+    return render_template("/user/event/event_app_input.html",
+                               event_name=event_name,
+                               event_id=event_id,
+                               event_category_id=event_category_id,
+                               event_date=event_date,
+                               event_place=event_place,
+                               event_overview=event_overview)
+
+@app.route("/user_user_top/event_app_check", methods=["GET", "POST"])
+def event_app_check():
+    event_id = request.form['event_id']
+    event_name = request.form['event_name']
+    event_category_id = request.form['event_category_id']
+    event_date = request.form['event_date']
+    event_place = request.form['event_place']
+    event_overview = request.form['event_overview']
+    return render_template("/user/event/event_app_check.html",
+                               event_name=event_name,
+                               event_id=event_id,
+                               event_category_id=event_category_id,
+                               event_date=event_date,
+                               event_place=event_place,
+                               event_overview=event_overview)
+
+@app.route("/user_user_top/event_app_comp", methods=["GET", "POST"])
+def event_app_comp():
+    event_id = request.form['event_id']
+    event_name = request.form['event_name']
+    event_category_id = request.form['event_category_id']
+    event_date = request.form['event_date']
+    event_place = request.form['event_place']
+    event_overview = request.form['event_overview']
+    return render_template("/user/event/event_app_comp.html",
+                               event_name=event_name,
+                               event_id=event_id,
+                               event_category_id=event_category_id,
+                               event_date=event_date,
+                               event_place=event_place,
+                               event_overview=event_overview)
+

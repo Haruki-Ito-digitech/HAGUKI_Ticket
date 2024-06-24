@@ -1,22 +1,13 @@
+ 
 {% extends "layout_staff.html" %}
-
+ 
 {% block body %}
-
+ 
 <!-- 機能共用 CSS -->
 <link rel="stylesheet" href="/static/css/staff/staff_customer_manage.css">
+ 
 
-<!-- ナビゲーション領域 -->
-<nav>
-  <div class="container">
-    <p class="menu">
-      <a href="{{ url_for('user_mypage') }}">マイページ</a>
-      >
-      <a href="{{ url_for('') }}">イベント詳細</a>
-      >申込みページ
-    </p>
-  </div>
-</nav>
-
+ 
 <!-- メインコンテンツ領域 -->
 <main>
   <div class="container">
@@ -25,51 +16,52 @@
     </h1>
     <h2 id="main_sub_title">申込みページ</h2>
     <p>以下のイベントを申し込みますか？</p>
-
+ 
     <form name="inputForm" method="post">
       <div id="form_area" class="base_pattern">
         <p>イベント名：</p>
-        <p><input name="event_name" class="info" type="text" value="" readonly="readonly">
+        <p><input name="event_name" class="info" type="text" value="{{event_name}}" readonly="readonly">
         </p>
-
+ 
         <p>イベントカテゴリ：</p>
-        <p><input name="event_category" class="info" type="password" value=""
+        <p><input name="event_category" class="info" type="text" value="{{event_category_name}}"
             readonly="readonly">
         </p>
-
+ 
         <p>日付：</p>
-        <p><input name="event_date" class="info" type="text" value="" readonly="readonly"></p>
-
+        <p><input name="event_date" class="info" type="date" value="{{event_date}}" readonly="readonly"></p>
+ 
         <p>場所：</p>
-        <p><input name="event_place" class="info" type="text" value="" readonly="readonly">
+        <p><input name="event_place" class="info" type="text" value="{{event_place}}" readonly="readonly">
         </p>
-
+ 
         <p>概要：</p>
-        <p><input name="event_overview" class="info" type="text" value="" readonly="readonly">
+        <p><input name="event_overview" class="info" type="text" value="{{event_overview}}" readonly="readonly">
         </p>
-
-        <p>残りチケット枚数：</p>
-        <p><input name="event_ticket" class="info" type="text" value="" readonly="readonly"></p>
-
+ 
         <p>席種：</p>
-        <input type="radio" name="" value="S席" checked="checked">
-        S席:10000円 &nbsp;&nbsp;
-        <input type="radio" name="" value="A席">
-        A席:5000円 &nbsp;&nbsp;
-        <input type="radio" name="" value="B席">
-        B席:3000円
+        <input name="ticket_seat_id" class="info" type="text" value="{{ticket_seat_id}}" readonly="readonly">
         </p>
-
+ 
+        <p>金額：</p>
+         <input name="ticket_price" class="info" type="text" value="{{ticket_price}}" readonly="readonly">
+        </p>
+ 
         <!-- hidden属性の項目 -->
-        <!-- <input name="customer_id" type="hidden" value="{{ customer_id }}"> -->
+        <input name="event_category_id" type="hidden" value="{{ event_category_id }}">
+        <input name="event_name" type="hidden" value="{{ event_name }}">
+        <input name="event_place" type="hidden" value="{{ event_place }}">
+        <input name="event_id" type="hidden" value="{{ event_id }}">
+        <input name="event_overview" type="hidden" value="{{ event_overview }}">
+        <input name="event_date" type="hidden" value="{{ event_date }}">
       </div>
-
+ 
       <div id="button_area">
-        <input type="submit" formaction="{{ url_for('', mode=mode) }}" class="go_next_button" value="はい">
-        <input type="button" class="other_button" value="いいえ" onclick="location.href=`{{url_for('')}}`">
+        <input type="submit" formaction="{{ url_for('event_app_input')}}" class="go_next_button" value="はい">
+        <input type="button" class="other_button" value="いいえ" onclick="location.href=`{{url_for('event_info')}}`">
       </div>
     </form>
   </div>
 </main>
-
+ 
 {% endblock %}

@@ -2,12 +2,57 @@
 
 {% block body %}
 <script src="{{ url_for('static', filename='js/mypage.js') }}"></script>
+<style>
+    input[type="submit"]:hover{
+    all:initial;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    background-color: beige;
+    opacity: 0.3;
+    transition: 0.3s;
+    border-radius: 10px;
+    align-items: center;
+    }
+
+    input[type="submit"]{
+    all:initial;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    position: absolute;
+    right: 0;
+    transition: 0.3s;
+    align-items: center;
+    }
+
+    input.check{
+        height: 80px;
+        align-items: center;
+    }
+    input.check[type="submit"]{
+        height: 80px;
+        align-items: center;
+    }
+    
+    div.conts{
+        margin-top: 10px;
+    }
+    
+    form{
+
+    }
+
+
+
+</style>
 <!-- メインコンテンツ領域 -->
 <main>
     <div class="container">
       <div style="display: flex;">
         <h1>
-            最新のイベント一欄
+            最新のイベント一覧
         </h1>
       </div>
       {% if mst_event %}
@@ -15,27 +60,30 @@
               <div class="conts">
                   <form name="lp01_01" method="post">
                     <a class="mypage">
-                      <div class="event_date">{{ event.event_date }}</div>
-                      <div class="event_category_name">
-                          {% for event_category in mst_event_category %}
-                              {% if event.event_category_id == event_category.event_category_id %}
-                                  {{ event_category.event_category_name }}
-                              {% endif %}
-                          {% endfor %}
-                      </div>
-                      <div class="event_name">{{ event.event_name }}</div>
-                      <div class="event_place">{{ event.event_place }}</div>
-                      <!-- hidden属性の項目 -->
-                      <input name="event_date" type="hidden" value="{{ event.event_date }}">
-                      <input name="event_category_id" type="hidden" value="{{ event.event_category_id }}">
-                      <input name="event_name" type="hidden" value="{{ event.event_name }}">
-                      <input name="event_place" type="hidden" value="{{ event.event_place }}">
-                      <input name="event_id" type="hidden" value="{{ event.event_id }}">
-                      <input name="event_overview" type="hidden" value="{{ event.event_overview }}">
-                      <input type="submit" formaction="{{url_for('event_check')}}"/>
+                      <div>
+                        <div class="event_date">{{ event.event_date }}</div>
+                        <div class="event_category_name">
+                            {% for event_category in mst_event_category %}
+                                {% if event.event_category_id == event_category.event_category_id %}
+                                    {{ event_category.event_category_name }}
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                        <div class="event_name">{{ event.event_name }}</div>
+                        <div class="event_place">{{ event.event_place }}</div>
+                        <!-- hidden属性の項目 -->
+                        <input name="event_category_id" type="hidden" value="{{ event.event_category_id }}">
+                        <input name="event_name" type="hidden" value="{{ event.event_name }}">
+                        <input name="event_place" type="hidden" value="{{ event.event_place }}">
+                        <input name="event_id" type="hidden" value="{{ event.event_id }}">
+                        <input name="event_overview" type="hidden" value="{{ event.event_overview }}">
+                        <input name="event_date" type="hidden" value="{{ event.event_date }}">
+
+                    </div>
+                      <input class="check" type="submit" formaction="{{url_for('event_info')}}" value="."/>
                     </a>  
                   </form>
-              </div>
+                </div>
 
       {% endfor %}
       {% else %}

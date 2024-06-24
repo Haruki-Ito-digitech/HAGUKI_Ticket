@@ -9,7 +9,15 @@
     <h1>
        チケット詳細
     </h1>
-     
+    
+    <p>イベント名 {{ my_ticket.event_name }}</p>
+    <p>イベントカテゴリ {{ my_ticket.event_category_name }}</p>
+    <p>日付 {{ my_ticket.event_date }}</p>
+    <p>場所 {{ my_ticket.event_place }}</p>
+    <p>概要 {{ my_ticket.event_overview }}</p>
+    <p>席種 {{ my_ticket.ticket_seat_name }}</p>
+    <p>金額 {{ my_ticket.ticket_price }}</p>
+    
     <input type="button" onClick="window.location.href=`{{ url_for('my_ticket')}}`"
              class=".gonext" value="MYチケット一覧へ" />
 

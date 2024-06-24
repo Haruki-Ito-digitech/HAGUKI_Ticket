@@ -1,23 +1,22 @@
 {% extends "layout_staff.html" %}
-
+ 
 {% block body %}
-
+ 
 <!-- 機能共用 CSS -->
 <link rel="stylesheet" href="/static/css/staff/staff_customer_manage.css">
-
+ 
 <!-- ナビゲーション領域 -->
 <nav>
-
     <div class="container">
       <p class="menu">
         <a href="{{ url_for('user_user_top') }}">マイページ</a>
         >会員情報
-        
+       
       </p>
     </div>
   </nav>
-  
-
+ 
+ 
 <!-- メインコンテンツ領域 -->
 <main>
     <div class="container">
@@ -51,6 +50,8 @@
         <!-- 変更、削除ボタンの表示 -->
 
     </div>
-</main>
 
+
+</main>
+ 
 {% endblock %}

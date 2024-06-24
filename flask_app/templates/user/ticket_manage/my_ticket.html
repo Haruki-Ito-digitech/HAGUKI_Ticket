@@ -17,16 +17,25 @@
         <div id="output_list_table">
           <!-- ここに一覧表を表示する -->
           <table border="1">
-            
-            
-            <tbody>
-          
-             
+            <tbody> 
+              <tr>
+                <th class="event_category_name">MYチケット一覧</th>
+              </tr>
+              {% for my_ticket in my_ticket_list %}
               <tr>
                 <form method="post">
-      
-                  
-  
+                  <td class="my_ticket">
+                    {{ my_ticket.event_name }}
+                    {{ my_ticket.event_date }}
+                    {{ my_ticket.ticket_price }}
+                    {{ my_ticket.ticket_seat_name }}
+                  </td>
+                  <!-- hidden属性の項目 -->
+                  <input name="event_category_name" type="hidden" value="{{ my_ticket.event_category_name }}">
+                  <input name="event_place" type="hidden" value="{{ my_ticket.event_place }}">
+                  <input name="event_overview" type="hidden" value="{{ my_ticket.event_overview }}">
+                  <input name="reservation_id" type="hidden" value="{{ my_ticket.reservation_id }}">
+    
                   <td class="action_button">
                     <div>
                       <input type="submit" formaction="{{ url_for('ticket_detail') }}"
@@ -39,7 +48,9 @@
                   </td>
                 </form>
               </tr>
-             
+              {% else %}
+            Myチケットは存在しません。
+            {% endfor %}
             </tbody>
           </table>
          
