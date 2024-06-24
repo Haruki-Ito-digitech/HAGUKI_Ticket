@@ -35,7 +35,8 @@
                   <input name="event_place" type="hidden" value="{{ my_ticket.event_place }}">
                   <input name="event_overview" type="hidden" value="{{ my_ticket.event_overview }}">
                   <input name="reservation_id" type="hidden" value="{{ my_ticket.reservation_id }}">
-    
+                  <input name="event_id" type="hidden" value="{{ my_ticket.event_id }}">
+
                   <td class="action_button">
                     <div>
                       <input type="submit" formaction="{{ url_for('ticket_detail') }}"

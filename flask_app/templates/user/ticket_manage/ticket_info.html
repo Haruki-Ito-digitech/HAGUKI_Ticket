@@ -3,11 +3,11 @@
 {% block body %}
 
 <main>
- <a href="user_user_top">マイページ</a>><a href="my_ticket">チケット一覧</a>>チケット詳細
+ <a href="/user_user_top">マイページ</a>><a href="/my_ticket">チケット一覧</a>>チケット詳細
 
   <div>
     <h1>
-       チケット詳細
+       MYチケット詳細
     </h1>
     
     <p>イベント名 {{ my_ticket.event_name }}</p>
@@ -22,7 +22,7 @@
              class=".gonext" value="MYチケット一覧へ" />
 
     <!-- プルダウン追加 -->
-    <form action="ticket_evaluate" method="post">
+    <form method="post">
       <select name="numbers" >
         <option value="1">1</option>
         <option value="2">2</option>
@@ -31,7 +31,7 @@
         <option value="5">5</option>
       </select>
       <input name="event_id" type="hidden" value="{{ my_ticket.event_id }}">
-      <input type="submit" value="評価を送信する">
+      <input type="submit" formaction= "{{ url_for('ticket_evaluate')}}" value="評価を送信する">
     </form>
 
 

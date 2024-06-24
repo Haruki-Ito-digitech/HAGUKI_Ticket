@@ -24,12 +24,13 @@ def user_user_top():
     mst_event_category = read_event_category()
     # セッション変数から選択された値を取得し、その後で削除
     selected_number = session.pop('selected_number', None)
+    event_id = session.pop("event_id",None)
+
     if selected_number is not None:
         # ticket_info.htmlから遷移してきたときのみ実行する操作
-        event_id = request.form.get("event_id")
         event = read_event_one(event_id)
         event.event_cumulative = int(event.event_cumulative + selected_number)
-        event.event_evaluate_times = int(event.event_evaluate_times + 1)
+        event.event_evaluate_times = int(event.event_evaluate_times) + 1
         event.event_value = round(event.event_cumulative/event.event_evaluate_times, 1)
         db.session.commit()
 
@@ -43,9 +44,10 @@ def user_user_top():
                     'event_date': event.event_date,
                     'event_place': event.event_place,
                     'event_overview': event.event_overview,
-                    'event.event_value':event.event_value
+                    'event_value':event.event_value
                     }
         mst_event_dict.append(param)
+        print(param)
     return render_template("/user/mypage/user_mypage.html", mst_event = mst_event_dict, mst_event_category=mst_event_category )
 
 @app.route("/user_user_top/event_info", methods=["GET", "POST"])
