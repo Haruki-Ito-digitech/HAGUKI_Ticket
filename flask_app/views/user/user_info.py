@@ -38,7 +38,7 @@ def user_info_change():
     return render_template("/user/mypage/info_change/user_info_change.html",
                            mst_customer=mst_customer)
 
-
+"""
 #会員情報変更確認
 @app.route("/user_info_check", methods=["GET", "POST"])
 def user_info_check():
@@ -95,7 +95,7 @@ def user_info_check():
     if re.fullmatch('[0-9]+', customer_phone) == None:
             flash(errorMessages.w10('電話番号'))
             isValidateError = True
-
+"""
 
     
 #会員情報変更確認
