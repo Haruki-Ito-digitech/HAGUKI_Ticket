@@ -10,6 +10,9 @@ class Mst_event(db.Model):
     event_date = db.Column(db.String(10))
     event_place = db.Column(db.String(30))
     event_overview = db.Column(db.String(200))
+    event_value = db.Column(db.String(10))
+    event_cumulative = db.Column(db.String(10))
+    event_evaluate_times = db.Column(db.String(10))
 
     def __init__(
         self,
@@ -19,6 +22,9 @@ class Mst_event(db.Model):
         event_date=None,
         event_place=None,
         event_overview=None,
+        event_value= None,
+        event_cumulative=None,
+        event_evaluate_times=None
     ):
         self.event_id = event_id
         self.event_category_id = event_category_id
@@ -26,6 +32,10 @@ class Mst_event(db.Model):
         self.event_date =  event_date
         self.event_place = event_place
         self.event_overview = event_overview
+        self.event_value =event_value
+        self.event_cumulative=event_cumulative
+        self.event_evaluate_times = event_evaluate_times
+
 
     def __repr__(self):
         return "<Mst_event event_id:{} event_category_id:{} event_name:{} event_date:{} event_place:{} event_overview:{}>".format(
@@ -35,4 +45,7 @@ class Mst_event(db.Model):
             self.event_date,
             self.event_place,
             self.event_overview,
+            self.event_value,
+            self.event_cumulative,
+            self.event_evaluate_times
         )

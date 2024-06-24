@@ -21,6 +21,18 @@
     <input type="button" onClick="window.location.href=`{{ url_for('my_ticket')}}`"
              class=".gonext" value="MYチケット一覧へ" />
 
+    <!-- プルダウン追加 -->
+    <form action="ticket_evaluate" method="post">
+      <select name="numbers" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <input name="event_id" type="hidden" value="{{ my_ticket.event_id }}">
+      <input type="submit" value="評価を送信する">
+    </form>
 
 
 

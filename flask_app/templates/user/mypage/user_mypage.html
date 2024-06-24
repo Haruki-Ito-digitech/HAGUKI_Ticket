@@ -60,6 +60,7 @@
               <div class="conts">
                   <form name="lp01_01" method="post">
                     <a class="mypage">
+
                       <div>
                         <div class="event_date">{{ event.event_date }}</div>
                         <div class="event_category_name">
@@ -71,6 +72,13 @@
                         </div>
                         <div class="event_name">{{ event.event_name }}</div>
                         <div class="event_place">{{ event.event_place }}</div>
+                        <div class = "event_value">
+                          {% if event.event_value == 0 %}
+                            評価がありません
+                          {% else %}
+                            {{ event.event_value }}
+                          {% endif %}   
+                          </div>
                         <!-- hidden属性の項目 -->
                         <input name="event_category_id" type="hidden" value="{{ event.event_category_id }}">
                         <input name="event_name" type="hidden" value="{{ event.event_name }}">
@@ -82,6 +90,7 @@
 
                     </div>
                       <input class="check" type="submit" formaction="{{url_for('event_info')}}" value="."/>
+
                     </a>  
                   </form>
                 </div>
