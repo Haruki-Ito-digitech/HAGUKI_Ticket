@@ -8,10 +8,12 @@ from flask_app.models.mst_event import Mst_event
 from flask_app.models.tbl_reservation import Tbl_reservation
 from flask_app.models.functions.reservations import read_reservation_customer_id,param_reservation,delete_reservation,read_reservation_one,reservation_detail
 from flask_app.models.functions.event import read_event_one
+from flask_app.views.user.common.user_common import is_customer_login
+
 
 #myチケット一覧画面
 @app.route("/my_ticket", methods=["GET", "POST"])
-#@is__login
+@is_customer_login
 def my_ticket():
     logged_in_customer_id = session["logged_in_customer_id"]
     reservation_list = read_reservation_customer_id(logged_in_customer_id)
@@ -21,7 +23,7 @@ def my_ticket():
 
 #myチケット詳細画面
 @app.route("/ticket_info/", methods=["GET", "POST"])
-#@is_staff_login
+@is_customer_login
 def ticket_detail():
     reservation_id = request.form.get("reservation_id")
     reservation = read_reservation_one(reservation_id)
@@ -33,7 +35,7 @@ def ticket_detail():
     return render_template("user/ticket_manage/ticket_info.html",my_ticket = my_ticket)
 
 @app.route("/ticket_evaluate", methods=["GET", "POST"])
-#@is_staff_login
+@is_customer_login
 def ticket_evaluate():
     #評価の送信機能　table追加 -> 累積評価cumulative_evaluation　評価された回数 evaluation_times
     selected_number = request.form.get('numbers')
@@ -44,16 +46,17 @@ def ticket_evaluate():
 
 # チケットを削除し、削除完了画面を表示
 @app.route("/ticket_cancel_comp", methods=["GET", "POST"])
-#@is_staff_login
-def delete_ticket(reservation_id):
+@is_customer_login
+def delete_ticket():
+    reservation_id = request.form.get("reservation_id")
     delete_reservation(reservation_id)
     return render_template("user/ticket_manage/cancel/ticket_cancel_comp.html")
 
 @app.route("/ticket_cancel_com", methods=["GET", "POST"])
-#@is_staff_login
+@is_customer_login
 def ticket_cancel():
-    reservation_id = request.form.get(reservation_id)
+    reservation_id = request.form.get("reservation_id")
     reservation = read_reservation_one(reservation_id)
-    my_ticket = param_reservation(reservation)
+    my_ticket = reservation_detail(reservation)
     return render_template("user/ticket_manage/cancel/ticket_cancel.html",my_ticket = my_ticket)
 

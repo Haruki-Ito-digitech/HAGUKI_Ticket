@@ -2,6 +2,11 @@
 {% extends "layout_staff.html" %}
  
 {% block body %}
+<style>
+  header .site_title .heads .imgs{
+      display: none;
+  }
+</style>
  
 <!-- 機能共用 CSS -->
 <link rel="stylesheet" href="/static/css/staff/staff_customer_manage.css">
@@ -77,7 +82,7 @@
  
       <div id="button_area">
         <input type="submit" formaction="{{ url_for('event_app_input')}}" class="go_next_button" value="はい">
-        <input type="button" class="other_button" value="いいえ" onclick="location.href=`{{url_for('event_info')}}`">
+        <input type="button" class="other_button" value="いいえ" onclick="location.href=`{{url_for('user_user_top')}}`">
       </div>
     </form>
   </div>

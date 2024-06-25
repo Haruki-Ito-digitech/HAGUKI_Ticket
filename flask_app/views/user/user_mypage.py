@@ -19,6 +19,7 @@ def user_user_top():
         return redirect("/user/user_login.html")
 """
 @app.route("/user_user_top", methods=["GET", "POST"])
+@is_customer_login
 def user_user_top():
 
     mst_event_category = read_event_category()
@@ -29,10 +30,14 @@ def user_user_top():
     if selected_number is not None:
         # ticket_info.htmlから遷移してきたときのみ実行する操作
         event = read_event_one(event_id)
-        event.event_cumulative = int(event.event_cumulative + selected_number)
+        event.event_cumulative = int(int(event.event_cumulative) + int(selected_number))
+        print(event.event_cumulative)
         event.event_evaluate_times = int(event.event_evaluate_times) + 1
+        print(event.event_evaluate_times)
         event.event_value = round(event.event_cumulative/event.event_evaluate_times, 1)
+        print(event.event_value)
         db.session.commit()
+    
 
     mst_event = read_event()
     mst_event_dict = []
@@ -51,6 +56,7 @@ def user_user_top():
     return render_template("/user/mypage/user_mypage.html", mst_event = mst_event_dict, mst_event_category=mst_event_category )
 
 @app.route("/user_user_top/event_info", methods=["GET", "POST"])
+@is_customer_login
 def event_info():
     mst_event_category = read_event_category()
     event_id = request.form['event_id']
@@ -92,6 +98,7 @@ def event_info():
                                event_overview=event_overview)
 
 @app.route("/user_user_top/event_app", methods=["GET", "POST"])
+@is_customer_login
 def event_app():
     mst_event_category = read_event_category()
     event_id = request.form['event_id']
@@ -135,6 +142,7 @@ def event_app():
 
 
 @app.route("/user_user_top/event_app_input", methods=["GET", "POST"])
+@is_customer_login
 def event_app_input():
     mst_event_category = read_event_category()
     event_id = request.form['event_id']
@@ -167,6 +175,7 @@ def event_app_input():
                                event_overview=event_overview)
 
 @app.route("/user_user_top/event_app_check", methods=["GET", "POST"])
+@is_customer_login
 def event_app_check():
     mst_event_category = read_event_category()
     event_id = request.form['event_id']
@@ -231,6 +240,7 @@ def event_app_check():
                                event_overview=event_overview)
 
 @app.route("/user_user_top/event_app_comp", methods=["GET", "POST"])
+@is_customer_login
 def event_app_comp():
     mst_event_category = read_event_category()
     event_id = request.form['event_id']

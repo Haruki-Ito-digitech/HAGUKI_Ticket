@@ -3,6 +3,7 @@ from flask_app.__init__ import app
 from flask_app.messages import ErrorMessages, InfoMessages
 from flask_app.models.functions.staff import read_staff_staff_account
 from flask_app.views.staff.common.staff_common import is_staff_login
+from flask_app.views.user.common.user_common import is_customer_login
 from flask_app.models.functions.customer import read_customer_one,delete_customer
 
 # インフォメーションメッセージクラスのインスタンス作成
@@ -12,7 +13,7 @@ errorMessages = ErrorMessages()
 
 #会員退会
 @app.route("/user_unsub/delete", methods=["GET", "POST"])
-# @is_staff_login
+@is_customer_login
 def user_delete():
     customer_id = session["logged_in_customer_id"]
     customer = read_customer_one(customer_id)
@@ -21,7 +22,7 @@ def user_delete():
 
 #会員退会完了
 @app.route("/user_unsub/cmp", methods=["GET", "POST"])
-# @is_staff_login
+@is_customer_login
 def user_comp():
     customer_id = session["logged_in_customer_id"]
     delete_customer(customer_id)

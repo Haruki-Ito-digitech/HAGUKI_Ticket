@@ -52,6 +52,27 @@
 
     }
 
+    [value="All"]:checked ~ .targets [data-category] {
+      display: block;
+    }
+    [value="1"]:checked ~ .targets .conts:not([data-category~="1"]) {
+      display: none;
+    }
+    [value="2"]:checked ~ .targets .conts:not([data-category~="2"]) {
+      display: none;
+    }
+    [value="3"]:checked ~ .targets .conts:not([data-category~="3"]) {
+      display: none;
+    }
+    [value="4"]:checked ~ .targets .conts:not([data-category~="4"]) {
+      display: none;
+    }
+    [value="5"]:checked ~ .targets .conts:not([data-category~="5"]) {
+      display: none;
+    }
+    
+
+
 
 
 </style>
@@ -62,12 +83,20 @@
     <div class="container">
       <div style="display: flex;">
         <h1>
-            最新のイベント一覧
+            最新のイベント一覧<hr>
+
         </h1>
       </div>
+      <input type="radio" name="categories" id="All" value="All" checked>
+      <label for="All"> 全て </label>
+      {% for event_category in mst_event_category %}
+        <input type="radio" name="categories" id={{event_category.event_category_id}} value={{event_category.event_category_id}}>
+        <label for="All"> {{event_category.event_category_name}}</label>
+      {% endfor %}
+      <div class="targets">
       {% if mst_event %}
       {% for event in mst_event %}
-              <div class="conts">
+                <div class="conts" data-category={{event.event_category_id}}>
                   <form name="lp01_01" method="post">
                     <a class="mypage">
 
@@ -109,7 +138,7 @@
       {% else %}
           イベントが存在しません。
       {% endif %}
-  
       </div>
-  </main>
+  </div>
+</main>
 {% endblock %}

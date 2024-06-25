@@ -4,7 +4,11 @@
 
 <!-- 機能共用 CSS -->
 <link rel="stylesheet" href="/static/css/staff/staff_customer_manage.css">
-
+<style>
+  header .site_title .heads .imgs{
+      display: none;
+  }
+</style>
 
 <!-- メインコンテンツ領域 -->
 <main>
@@ -61,7 +65,7 @@
 
       <div id="button_area">
         <input type="submit" formaction="{{ url_for('event_app_check')}}" class="go_next_button" value="確認画面へ移る">
-        <input type="button" class="other_button" value="戻る" onclick="location.href=`{{url_for('event_app')}}`">
+        <input type="button" class="other_button" value="戻る" onclick="location.href=`{{url_for('user_user_top')}}`">
       </div>
     </form>
   </div>

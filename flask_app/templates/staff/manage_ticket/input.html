@@ -42,15 +42,15 @@
 
           <p>席種<span class="required">（必須）</span>：</p>
           <p id="output_ticket_seat_sb">
-            <select id="ticket_seat_sb" name="ticket_seat_id" form="inputForm">
+            <select id="ticket_seat_sb" name="ticket_seat_id" form="inputForm" required="required">
               {% for seat_param in seat_param_list %}
                 <option value="{{ seat_param.seat_id }}" {{ seat_param.status }}>{{seat_param.seat_name}}</option>
-              {% endfor %}
+              {% endfor %} 
             </select>
           </p>
 
           <p>料金<span class="required">（必須）</span>：</p>
-          <p><input name="ticket_price" type="text" value="{{ ticket_price }}"></p>
+          <p><input name="ticket_price" type="text" value="{{ ticket_price }}" required="required"></p>
 
           <p>受付状態<span class="required">（必須）</span>：</p>
           <p class="radioButton">
