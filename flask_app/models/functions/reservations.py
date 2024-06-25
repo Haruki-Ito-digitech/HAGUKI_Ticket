@@ -85,3 +85,38 @@ def param_reservation(reservation_list):
         reservation_param_list.append(param)
 
     return reservation_param_list
+
+
+
+def reservation_detail(reservation):
+
+        param = {
+            "reservation_id": "",
+            "event_id": "",
+            "event_name": "",
+            "event_category_id": "",
+            "event_category_name": "",
+            "event_date": "",
+            "event_place": "",
+            "event_overview": "",
+            "ticket_seat_name": "",
+            "ticket_price": "",
+            "customer_name": ""
+        }
+
+        param['reservation_id'] = reservation.reservation_id
+        ticket = read_ticket_one(reservation.ticket_id)
+        param['ticket_price'] = ticket.ticket_price
+        param['ticket_seat_name'] = convert_seat_id(ticket.ticket_seat_id)
+        event = read_event_one(ticket.event_id)
+        param['event_date'] = event.event_date
+        param['event_id'] = event.event_id
+        param['event_name'] = event.event_name
+        param['customer_name'] = convert_customer_id(reservation.customer_id)
+        param['event_category_id'] = event.event_category_id
+        param['event_category_name'] = convert_event_category_id(
+            event.event_category_id)
+        param['event_place'] = event.event_place
+        param['event_overview'] = event.event_overview
+
+        return param

@@ -83,10 +83,10 @@
                         <div class="event_name">{{ event.event_name }}</div>
                         <div class="event_place">{{ event.event_place }}</div>
                         <div class = "event_value">
-                          {% if event.event_value == 0 %}
+                          {% if event.event_value == 0 or event.event_value == None %}
                             評価がありません
                           {% else %}
-                            {{ event.event_value }}
+                            このイベントの評価：{{ event.event_value }}
                           {% endif %}   
                           </div>
                         <!-- hidden属性の項目 -->
