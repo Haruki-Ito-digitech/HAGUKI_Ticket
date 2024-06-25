@@ -69,7 +69,7 @@
  
       <div id="button_area">
         <input type="submit" formaction="{{ url_for('event_app_comp')}}" class="go_next_button" value="入力確定">
-        <input type="button" class="other_button" value="申込を中止" onclick="location.href=`{{url_for('event_app_input')}}`">
+        <input type="button" formaction="{{ url_for('event_app_input')}}" class="other_button" value="戻る">
       </div>
     </form>
   </div>
