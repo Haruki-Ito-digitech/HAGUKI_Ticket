@@ -1,23 +1,22 @@
 {% extends "layout_staff.html" %}
-
+ 
 {% block body %}
-
+ 
 <!-- 機能共用 CSS -->
 <link rel="stylesheet" href="/static/css/staff/staff_customer_manage.css">
-
+ 
 <!-- ナビゲーション領域 -->
 <nav>
-<<<<<<< HEAD
     <div class="container">
       <p class="menu">
         <a href="{{ url_for('user_user_top') }}">マイページ</a>
         >会員情報
-        
+       
       </p>
     </div>
   </nav>
-  
-
+ 
+ 
 <!-- メインコンテンツ領域 -->
 <main>
     <div class="container">
@@ -26,28 +25,33 @@
         </h1>
         <h2 id="main_sub_title">会員情報</h2>
         <!-- 会員情報の表示 -->
+        <form name="inputForm" method="post">
+          <div id="form_area" class="base_pattern">
+            <p>アカウント名：{{mst_customer.customer_account}}</p>
+            <p>パスワード：{{mst_customer.customer_passoword}}</p>
+            <p>名前：{{mst_customer.customer_name}}</p>
+            <p>郵便番号：{{mst_customer.customer_zipcode}}</p>
+            <p>住所：{{mst_customer.customer_address}}</p>
+            <p>電話番号：{{mst_customer.customer_phone}}</p>
+            <p>生年月日：{{mst_customer.customer_birth}}</p>
+          <div>
+        </form>
 
-
-
+        <div>
+          <input type="button"
+              class="half_button"value="変更" onClick="window.location.href=`{{url_for('user_info_change')}}`">
+          <input type="button"  
+              class="half_button"value="退会" onClick="window.location.href=`{{url_for('user_delete')}}`">
+        </div>
+      </div>
 
 
 
         <!-- 変更、削除ボタンの表示 -->
-            <div>
-            <input type="submit" formaction="{{ url_for('user_info_change') }}" 
-                class="half_button"value="変更" />
-            </div>
+
     </div>
 
-=======
-</nav>
 
-<!-- メインコンテンツ領域 -->
-<main>
-  <p>
-    <input type="button" class="menu_button" value="退会" onClick="window.location.href=`{{url_for('user_delete')}}`">
-  </p>
->>>>>>> refs/remotes/origin/develop
 </main>
-
+ 
 {% endblock %}

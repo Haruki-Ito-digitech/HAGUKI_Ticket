@@ -1,19 +1,25 @@
 {% extends "layout_staff.html" %}
 
 {% block body %}
+<style>
+header .site_title .heads .imgs{
+    display: none;
+}
+</style>
 <ul class="list-group list-group-flush"></ul>
 
-<p>
-    <input type="button" class="menu_button" value="スタッフ画面"
-        onclick="window.location.href=`{{url_for('staff_staff_login')}}`">
-</p>
-<p>
-    <input type="button" class="menu_button" value="会員ログイン" 
-        onclick="window.location.href=`{{url_for('customer_customer_login')}}`">
-</p>
-<p>
-    <input type="button" class="menu_button" value="新規会員登録" 
-        onclick="window.location.href=`{{url_for('user_signup')}}`">
-</p>
-
+<div style="margin-left: 50px; margin-top:50px">
+    <p>
+        <input type="button" class="menu_button" value="スタッフ画面"
+            onclick="window.location.href=`{{url_for('staff_staff_login')}}`">
+    </p>
+    <p>
+        <input type="button" class="menu_button" value="会員ログイン" 
+            onclick="window.location.href=`{{url_for('customer_customer_login')}}`">
+    </p>
+    <p>
+        <input type="button" class="menu_button" value="新規会員登録" 
+            onclick="window.location.href=`{{url_for('user_signup')}}`">
+    </p>
+</div>
 {% endblock %}

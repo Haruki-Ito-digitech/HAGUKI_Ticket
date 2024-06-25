@@ -57,14 +57,8 @@ header .site_title .heads .imgs {
 }
 
 .mypage {
-	margin: 20px;
-	transition: 0.3s;
 	border-radius: 3px;
-}
-.mypage:hover {
-	box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-	margin: auto;
-	opacity: 0.5;
+	display: flex;
 }
 .mypage form{
 	background-color: #f0f0f0;

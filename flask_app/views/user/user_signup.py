@@ -3,6 +3,8 @@ from flask_app.__init__ import app
 from flask_app.messages import ErrorMessages, InfoMessages
 from flask_app.models.functions.staff import read_staff_staff_account
 from flask_app.models.functions.customer import create_customer
+from flask_app.views.user.common.user_common import is_customer_login
+
 
 
 # インフォメーションメッセージクラスのインスタンス作成
@@ -12,7 +14,6 @@ errorMessages = ErrorMessages()
 
 def validate_form(form):
     errors = []
-
     # 各フィールドが空白でないことを確認
     for field, value in form.items():
         if not value:
@@ -22,6 +23,7 @@ def validate_form(form):
 
 # 新規会員登録
 @app.route("/user_signup", methods=["GET", "POST"])
+@is_customer_login
 def user_signup():
     if request.method == 'POST':
         redirect(url_for('user_signup_check'))
@@ -30,6 +32,7 @@ def user_signup():
 
 # 新規会員登録確認画面
 @app.route("/user_signup_check", methods=["GET", "POST"])
+@is_customer_login
 def user_signup_check():
     customer_id = request.form.get('customer_id')
     customer_account = request.form.get('customer_account')
@@ -98,6 +101,7 @@ def user_signup_check():
 
 # 新規会員登録完了
 @app.route("/user_signup_comp", methods=["GET", "POST"])
+@is_customer_login
 def user_signup_comp():
     create_customer(request)
     return render_template("/user/signup/user_signup_comp.html")

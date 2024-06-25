@@ -3,16 +3,36 @@
 {% block body %}
 
 <main>
- <a href="user_user_top">マイページ</a>><a href="my_ticket">チケット一覧</a>>チケット詳細
+ <a href="/user_user_top">マイページ</a>><a href="/my_ticket">チケット一覧</a>>チケット詳細
 
   <div>
     <h1>
-       チケット詳細
+       MYチケット詳細
     </h1>
-     
+    
+    <p>イベント名 {{ my_ticket.event_name }}</p>
+    <p>イベントカテゴリ {{ my_ticket.event_category_name }}</p>
+    <p>日付 {{ my_ticket.event_date }}</p>
+    <p>場所 {{ my_ticket.event_place }}</p>
+    <p>概要 {{ my_ticket.event_overview }}</p>
+    <p>席種 {{ my_ticket.ticket_seat_name }}</p>
+    <p>金額 {{ my_ticket.ticket_price }}</p>
+    
     <input type="button" onClick="window.location.href=`{{ url_for('my_ticket')}}`"
              class=".gonext" value="MYチケット一覧へ" />
 
+    <!-- プルダウン追加 -->
+    <form method="post">
+      <select name="numbers" >
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <input name="event_id" type="hidden" value="{{ my_ticket.event_id }}">
+      <input type="submit" formaction= "{{ url_for('ticket_evaluate')}}" value="評価を送信する">
+    </form>
 
 
 
