@@ -5,6 +5,16 @@
 <!-- 機能共用 CSS -->
 <link rel="stylesheet" href="/static/css/staff/staff_customer_manage.css">
 
+<!-- ナビゲーション領域 -->
+<nav>
+  <div class="container">
+    <p class="menu">
+      <a href="{{ url_for('staff_staff_top') }}">イベント一覧</a>
+      > イベント詳細
+    </p>
+  </div>
+</nav>
+
  
 <!-- メインコンテンツ領域 -->
 <main>
@@ -37,9 +47,9 @@
         <p><input name="event_ticket" class="info" type="text" value="○" readonly="readonly"></p>
         <p>※残席余裕あり→○、残席わずか→△、売り切れ→×</p>
  
-        <p>席種：</p>
+        <>席種：<span class="required">（必須）</span></p>
         {% for ticket in tickets %}
-          <input type="radio" name="ticket_seat_id" value="{{ticket.id}}">
+          <input type="radio" name="ticket_seat_id" value="{{ticket.id}}" required="required">
           <input name="ticket_seat_name" type="hidden" value="{{ ticket.name }}">
           {{ticket.name}}:{{ticket.price}}円 &nbsp;&nbsp;
         {% endfor %}

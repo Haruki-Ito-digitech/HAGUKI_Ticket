@@ -9,11 +9,12 @@
     height: 100%;
     position: absolute;
     left: 0;
-    background-color: beige;
+    background-color:#f79e45;
     opacity: 0.3;
     transition: 0.3s;
     border-radius: 10px;
     align-items: center;
+    color: #4c3f33;
     }
 
     input[type="submit"]{
@@ -28,16 +29,23 @@
     }
 
     input.check{
-        height: 80px;
+        height: 120px;
         align-items: center;
+        background-color:#f5d3b0;
+        border-radius: 10px;
+        text-align: right;
+        opacity: 0.3;
+        color: #321a02
     }
     input.check[type="submit"]{
-        height: 80px;
+        height: 120px;
         align-items: center;
+        text-align: right;
+
     }
     
     div.conts{
-        margin-top: 10px;
+        margin-top: 30px;
     }
     
     form{
@@ -47,6 +55,8 @@
 
 
 </style>
+
+
 <!-- メインコンテンツ領域 -->
 <main>
     <div class="container">
@@ -89,7 +99,7 @@
                         <input name="event_category_name" type="hidden" value="{{ event_category_name }}">
 
                     </div>
-                      <input class="check" type="submit" formaction="{{url_for('event_info')}}" value="."/>
+                      <input class="check" type="submit" formaction="{{url_for('event_info')}}" value="＞詳細を見る"/>
 
                     </a>  
                   </form>
