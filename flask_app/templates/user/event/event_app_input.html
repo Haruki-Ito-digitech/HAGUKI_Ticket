@@ -65,8 +65,20 @@
 
       <div id="button_area">
         <input type="submit" formaction="{{ url_for('event_app_check')}}" class="go_next_button" value="確認画面へ移る">
-        <input type="button" class="other_button" value="戻る" onclick="location.href=`{{url_for('user_user_top')}}`">
       </div>
+    </form>
+    <form method="post">
+      <!-- hidden属性の項目 -->        
+      <input name="event_category_id" type="hidden" value="{{ event_category_id }}">
+      <input name="event_name" type="hidden" value="{{ event_name }}">
+      <input name="event_place" type="hidden" value="{{ event_place }}">
+      <input name="event_id" type="hidden" value="{{ event_id }}">
+      <input name="event_overview" type="hidden" value="{{ event_overview }}">
+      <input name="event_date" type="hidden" value="{{ event_date }}">
+      <input name="ticket_seat_id" type="hidden" value="{{ ticket_seat_id }}">
+      <input name="ticket_price" type="hidden" value="{{ ticket_price }}">
+      <input name="ticket_seat_name" type="hidden" value="{{ ticket_seat_name }}">
+      <input type="submit" formaction="{{ url_for('event_app')}}" class="other_button" value="戻る">
     </form>
   </div>
 </main>

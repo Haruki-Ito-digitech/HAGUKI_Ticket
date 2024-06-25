@@ -77,12 +77,13 @@
         <input name="event_overview" type="hidden" value="{{ event_overview }}">
         <input name="event_date" type="hidden" value="{{ event_date }}">
         <input name="ticket_seat_id" type="hidden" value="{{ ticket_seat_id }}">
+        <input name="event_category_name" type="hidden" value="{{ event_category_name }}">
 
       </div>
  
       <div id="button_area">
         <input type="submit" formaction="{{ url_for('event_app_input')}}" class="go_next_button" value="はい">
-        <input type="button" class="other_button" value="いいえ" onclick="location.href=`{{url_for('user_user_top')}}`">
+        <input type="submit" formaction="{{ url_for('event_info')}}" class="other_button" value="いいえ">
       </div>
     </form>
   </div>
