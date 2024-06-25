@@ -7,6 +7,10 @@ from flask_app.models.functions.event_category import event_category_name_judge,
 from flask_app.models.functions.ticket import read_ticket_event_id, read_ticket_event_id, convert_seat_id
 from flask_app.models.functions.reservations import create_reservation
 from flask_app.models.functions.customer import read_customer_customer_account
+import requests
+from bs4 import BeautifulSoup
+
+
 
 """
 # スタッフメニュー（トップページ）
@@ -276,3 +280,10 @@ def event_app_comp():
     create_reservation(request)
     return render_template("/user/event/event_app_comp.html")
 
+
+#画像検索関数
+def img_serch(word):
+    page_url = f"https://search.yahoo.co.jp/image/search?p={word}"
+    res = requests.get(page_url)
+    soup = BeautifulSoup(res.text)
+    print(soup.find_all("img"))

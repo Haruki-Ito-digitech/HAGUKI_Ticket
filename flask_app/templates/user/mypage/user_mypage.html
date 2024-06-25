@@ -15,6 +15,7 @@
     border-radius: 10px;
     align-items: center;
     color:black;
+    cursor: pointer;
     }
 
     input[type="submit"]{
@@ -35,7 +36,7 @@
         border-radius: 10px;
         text-align: right;
         opacity: 0.3;
-        color: #321a02;
+        color: #130a01;
     }
     input.check[type="submit"]{
         height: 140px;
@@ -76,6 +77,7 @@
 }
 
 .radio-inline__label {
+    background: #f9b673;
     display: inline-block;
     padding: 0.5rem 1rem;
     margin-right: 18px;
@@ -83,14 +85,24 @@
     transition: all .2s;
 }
 
+.radio-inline__label:hover {
+    background: #f4e6d9;
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    margin-right: 18px;
+    border-radius: 3px;
+    transition: all .2s;
+    cursor: pointer;
+}
+
 .radio-inline__input:checked + .radio-inline__label {
-    background: #B54A4A;
+    background: #f07c07;
     color: #fff;
     text-shadow: 0 0 1px rgba(0,0,0,.7);
 }
 
 .radio-inline__input:focus + .radio-inline__label {
-    outline-color: #4D90FE;
+    outline-color: #0b172a;
     outline-offset: -2px;
     outline-style: auto;
     outline-width: 5px;
