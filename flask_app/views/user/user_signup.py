@@ -23,7 +23,7 @@ def validate_form(form):
 
 # 新規会員登録
 @app.route("/user_signup", methods=["GET", "POST"])
-@is_customer_login
+# @is_customer_login
 def user_signup():
     if request.method == 'POST':
         redirect(url_for('user_signup_check'))
@@ -32,7 +32,7 @@ def user_signup():
 
 # 新規会員登録確認画面
 @app.route("/user_signup_check", methods=["GET", "POST"])
-@is_customer_login
+#@is_customer_login
 def user_signup_check():
     customer_id = request.form.get('customer_id')
     customer_account = request.form.get('customer_account')
