@@ -25,7 +25,6 @@ def user_user_top():
 @app.route("/user_user_top", methods=["GET", "POST"])
 @is_customer_login
 def user_user_top():
-
     mst_event_category = read_event_category()
     # セッション変数から選択された値を取得し、その後で削除
     selected_number = session.pop('selected_number', None)
@@ -46,6 +45,12 @@ def user_user_top():
     mst_event = read_event()
     mst_event_dict = []
     for event in mst_event:
+        for event_category in mst_event_category:
+            event_category_id = int(event.event_category_id)
+            if event_category_id == event_category.event_category_id:
+                event_category_name = event_category.event_category_name
+                word=event_category_name
+                img = img_serch(word)
         param = {'isDeletable': True,
                     'event_id': event.event_id,
                     'event_category_id': event.event_category_id,
@@ -53,10 +58,11 @@ def user_user_top():
                     'event_date': event.event_date,
                     'event_place': event.event_place,
                     'event_overview': event.event_overview,
-                    'event_value':event.event_value
+                    'event_value':event.event_value,
+                    'event_img':img
                     }
         mst_event_dict.append(param)
-        print(param)
+        print(is_customer_login)
     return render_template("/user/mypage/user_mypage.html", mst_event = mst_event_dict, mst_event_category=mst_event_category )
 
 @app.route("/user_user_top/event_info", methods=["GET", "POST"])
@@ -84,7 +90,6 @@ def event_info():
             'price':ticket.ticket_price
         }
         tickets.append(param)
-    print(tickets)
         # param = {'id': ticket_seat_id,
         #     'name': name
         #     }
@@ -129,7 +134,6 @@ def event_app():
         }
         tickets.append(param)
     
-    print(ticket_seat_id)
 
     return render_template("/user/event/event_app.html",
                                event_name=event_name,
@@ -283,7 +287,16 @@ def event_app_comp():
 
 #画像検索関数
 def img_serch(word):
-    page_url = f"https://search.yahoo.co.jp/image/search?p={word}"
+    page_url = f"https://soco-st.com/?s={word}"
+    print(page_url)
     res = requests.get(page_url)
     soup = BeautifulSoup(res.text)
-    print(soup.find_all("img"))
+    elems = (soup.select('img'))
+    for elem in elems:
+        width = elem.get("width")
+        if width == "1080":
+            img = elem.get("src")
+            print(img)
+            break
+    print("hello")
+    return img
