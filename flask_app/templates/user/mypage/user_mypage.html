@@ -31,6 +31,7 @@
 
     input.check{
         height: 140px;
+        width: 100%;
         align-items: center;
         background-color:#f5d3b0;
         border-radius: 10px;
@@ -42,13 +43,20 @@
         height: 140px;
         align-items: center;
         text-align: right;
+        width: 100%;
+        left: 0;
 
     }
     
     div.conts{
         margin-top: 30px;
+        width: 48%;
     }
     
+    .targets{
+      display: flex;
+      justify-content: space-between;
+    }
     form{
     }
 
@@ -169,7 +177,6 @@
 
                     </div>
                       <input class="check" type="submit" formaction="{{url_for('event_info')}}" value="＞詳細を見る"/>
-
                     </a>  
                   </form>
                 </div>

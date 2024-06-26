@@ -60,7 +60,8 @@ header .site_title .heads .imgs {
 	border-radius: 3px;
 	display: flex;
 	align-items: center;
-	padding-inline: 20px
+	position: relative;
+	
 }
 .mypage form{
 	background-color: #f0f0f0;
