@@ -141,21 +141,21 @@
                       </div>
 
                       <div>
-                        <div class="event_date">{{ event.event_date }}</div>
-                        <div class="event_category_name">
+                        <div class="event_date" style="font-size: small;">{{ event.event_date }}</div>
+                        <!-- <div class="event_category_name">
                             {% for event_category in mst_event_category %}
                                 {% if event.event_category_id == event_category.event_category_id %}
                                     {{ event_category.event_category_name }}
                                 {% endif %}
                             {% endfor %}
-                        </div>
-                        <div class="event_name">{{ event.event_name }}</div>
-                        <div class="event_place">{{ event.event_place }}</div>
+                        </div> -->
+                        <div class="event_name" style="font-weight: bold;">{{ event.event_name }}</div>
+                        <!-- <div class="event_place">{{ event.event_place }}</div> -->
                         <div class = "event_value">
                           {% if event.event_value == 0 or event.event_value == None %}
                             評価がありません
                           {% else %}
-                            このイベントの評価：{{ event.event_value }}
+                            イベント評価：{{ event.event_value }}
                           {% endif %}   
                           </div>
                         <!-- hidden属性の項目 -->
